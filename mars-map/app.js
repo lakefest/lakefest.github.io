@@ -33,7 +33,7 @@ function fit(){let list=filtered().filter(o=>o.location);if(list.length)map.fitB
 async function init(){
  if(!window.L)throw Error('Не загрузилась библиотека карты');
  map=L.map('map',{zoomControl:false}).setView([55.77,37.64],10);L.control.zoom({position:'bottomright'}).addTo(map);
- let tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);let tileErrors=0;tiles.on('tileerror',()=>{if(++tileErrors===6){$('#mapNotice').textContent='Фоновая карта не загрузилась. Точки, метро и маршруты доступны; проверь подключение.';$('#mapNotice').hidden=false}});
+ let tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);let tileErrors=0;tiles.on('tileerror',()=>{if(++tileErrors===6){$('#mapNotice').textContent='Фоновая карта не загрузилась. Точки, метро и маршруты доступны; проверь подключение.';$('#mapNotice').hidden=false}});
  [objects,posts]=await Promise.all(['objects.json','posts.json'].map(async u=>{let r=await fetch(u);if(!r.ok)throw Error('Не удалось загрузить данные');return r.json()}));
  const [metro,meta]=await Promise.all(['metro.json','meta.json'].map(u=>fetch(u).then(r=>r.json())));
  $('#stats').innerHTML=`<span><b>${objects.length}</b> мест</span><span><b>${objects.filter(o=>o.location).length}</b> на карте</span><span><b>${posts.length}</b> постов</span>`;$('#updated').textContent='снимок '+meta.collectedAt.split('-').reverse().join('.');

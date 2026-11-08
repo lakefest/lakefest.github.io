@@ -16,4 +16,4 @@ Python 3 и Pillow: `python collect.py`, затем `python prepare.py`. Обн�
 
 ## Источники
 
-Публикации и фото: @MarsikzbMsK; карта: OpenStreetMap/CARTO; станции метро: api.hh.ru/metro/1. Leaflet 1.9.4 (BSD-2-Clause). Фоновая карта, шрифты и Яндекс Карты требуют интернета. Избранное хранится в браузере.
+Публикации и фото: @MarsikzbMsK; карта: OpenStreetMap; станции метро: api.hh.ru/metro/1. Leaflet 1.9.4 (BSD-2-Clause). Фоновая карта, шрифты и Яндекс Карты требуют интернета. Избранное хранится в браузере.
